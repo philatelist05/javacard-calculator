@@ -1,0 +1,44 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+	<xs:element name="Data">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Test" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:all>
+							<xs:element name="APDUCommand">
+								<xs:complexType>
+									<xs:attribute name="cla" type="OneByteHex" use="required"/>
+									<xs:attribute name="ins" type="OneByteHex" use="required"/>
+									<xs:attribute name="p1" type="OneByteHex" use="required"/>
+									<xs:attribute name="p2" type="OneByteHex" use="required"/>
+									<xs:attribute name="data" type="xs:hexBinary"/>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="ExpectedResponse">
+								<xs:complexType>
+									<xs:attribute name="sw" type="TwoByteHex" use="required"/>
+									<xs:attribute name="data" type="xs:hexBinary"/>
+								</xs:complexType>
+							</xs:element>
+						</xs:all>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+
+	</xs:element>
+
+	<xs:simpleType name="OneByteHex">
+		<xs:restriction base="xs:hexBinary">
+			<xs:length value="1"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="TwoByteHex">
+		<xs:restriction base="xs:hexBinary">
+			<xs:length value="2"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+</xs:schema>

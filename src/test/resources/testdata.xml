@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Data xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:noNamespaceSchemaLocation="testdata.xsd">
+	<Test>
+		<APDUCommand cla="00" ins="01" p1="09" p2="01" data="00"/>
+		<ExpectedResponse sw="9000" data="000a"/>
+	</Test>
+</Data>
