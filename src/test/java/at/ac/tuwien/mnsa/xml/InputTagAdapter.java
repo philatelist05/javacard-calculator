@@ -1,7 +1,6 @@
 package at.ac.tuwien.mnsa.xml;
 
 import at.ac.tuwien.mnsa.xml.tag.InputTag;
-import at.ac.tuwien.mnsa.xml.tag.TestTag;
 import org.apache.commons.lang3.ArrayUtils;
 
 import javax.smartcardio.CommandAPDU;

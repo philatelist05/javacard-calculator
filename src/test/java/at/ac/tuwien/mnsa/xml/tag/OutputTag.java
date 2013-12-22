@@ -1,13 +1,10 @@
 package at.ac.tuwien.mnsa.xml.tag;
 
 import javax.xml.bind.DatatypeConverter;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.adapters.HexBinaryAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
-@XmlAccessorType(XmlAccessType.FIELD)
 public class OutputTag {
 
 	@XmlAttribute

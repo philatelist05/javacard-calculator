@@ -10,7 +10,6 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.util.List;
 
 @XmlRootElement(name = "Data")
-@XmlAccessorType(XmlAccessType.FIELD)
 public class RootTag {
 
 	@XmlElement(name = "Test")
