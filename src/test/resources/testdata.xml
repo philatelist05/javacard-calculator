@@ -2,7 +2,7 @@
 <Data xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:noNamespaceSchemaLocation="testdata.xsd">
 
-	<!-- ADD TESTS -->
+	<!-- ADD -->
 	<!-- 4 + 6 = A -->
 	<Test>
 		<Input cla="00" ins="01" p1="04" p2="06" data="00"/>
@@ -16,6 +16,41 @@
 	<!-- 0 + 0 = 0 -->
 	<Test>
 		<Input cla="00" ins="01" p1="00" p2="00" data="00"/>
+		<Output sw1="90" sw2="00" data="0000"/>
+	</Test>
+	<!-- 7f + 1 = 80 -->
+	<Test>
+		<Input cla="00" ins="01" p1="7f" p2="01" data="00"/>
+		<Output sw1="90" sw2="00" data="8000"/>
+	</Test>
+	<!-- 7f + 2 = 81 -->
+	<Test>
+		<Input cla="00" ins="01" p1="7f" p2="02" data="00"/>
+		<Output sw1="90" sw2="00" data="8100"/>
+	</Test>
+	<!-- 05 + -1 = 04 -->
+	<Test>
+		<Input cla="00" ins="01" p1="05" p2="ff" data="00"/>
+		<Output sw1="90" sw2="00" data="0400"/>
+	</Test>
+	<!-- 7f + 7f = fe -->
+	<Test>
+		<Input cla="00" ins="01" p1="7f" p2="7f" data="00"/>
+		<Output sw1="90" sw2="00" data="fe00"/>
+	</Test>
+	<!-- 7f + -10 = 6f -->
+	<Test>
+		<Input cla="00" ins="01" p1="7f" p2="f0" data="00"/>
+		<Output sw1="90" sw2="00" data="6f00"/>
+	</Test>
+	<!-- 05 + -10 = -0b -->
+	<Test>
+		<Input cla="00" ins="01" p1="05" p2="f0" data="00"/>
+		<Output sw1="90" sw2="00" data="f5ff"/>
+	</Test>
+	<!-- 05 + -5 = 0 -->
+	<Test>
+		<Input cla="00" ins="01" p1="05" p2="fb" data="00"/>
 		<Output sw1="90" sw2="00" data="0000"/>
 	</Test>
 
