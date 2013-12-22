@@ -1,12 +1,9 @@
 package at.ac.tuwien.mnsa.xml.tag;
 
-import at.ac.tuwien.mnsa.xml.HexByteAdapter;
-
 import javax.xml.bind.DatatypeConverter;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.adapters.HexBinaryAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
@@ -14,44 +11,40 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 public class InputTag {
 
 	@XmlAttribute
-	@XmlJavaTypeAdapter(HexByteAdapter.class)
-	@XmlSchemaType(name = "hexBinary")
-	private Byte cla;
+	@XmlJavaTypeAdapter(HexBinaryAdapter.class)
+	private byte[] cla;
 
 	@XmlAttribute
-	@XmlJavaTypeAdapter(HexByteAdapter.class)
-	@XmlSchemaType(name = "hexBinary")
-	private Byte ins;
+	@XmlJavaTypeAdapter(HexBinaryAdapter.class)
+	private byte[] ins;
 
 	@XmlAttribute
-	@XmlJavaTypeAdapter(HexByteAdapter.class)
-	@XmlSchemaType(name = "hexBinary")
-	private Byte p1;
+	@XmlJavaTypeAdapter(HexBinaryAdapter.class)
+	private byte[] p1;
 
 	@XmlAttribute
-	@XmlJavaTypeAdapter(HexByteAdapter.class)
-	@XmlSchemaType(name = "hexBinary")
-	private Byte p2;
+	@XmlJavaTypeAdapter(HexBinaryAdapter.class)
+	private byte[] p2;
 
 	@XmlAttribute
 	@XmlJavaTypeAdapter(HexBinaryAdapter.class)
 	private byte[] data;
 
 	public byte getCla() {
-		return cla;
+		return cla[0];
 	}
 
 
 	public byte getIns() {
-		return ins;
+		return ins[0];
 	}
 
 	public byte getP1() {
-		return p1;
+		return p1[0];
 	}
 
 	public byte getP2() {
-		return p2;
+		return p2[0];
 	}
 
 	public byte[] getData() {
@@ -62,10 +55,10 @@ public class InputTag {
 	@Override
 	public String toString() {
 		return "InputTag{" +
-				"cla=" + DatatypeConverter.printHexBinary(new byte[]{cla}) +
-				", ins=" + DatatypeConverter.printHexBinary(new byte[]{ins}) +
-				", p1=" + DatatypeConverter.printHexBinary(new byte[]{p1}) +
-				", p2=" + DatatypeConverter.printHexBinary(new byte[]{p2}) +
+				"cla=" + DatatypeConverter.printHexBinary(cla) +
+				", ins=" + DatatypeConverter.printHexBinary(ins) +
+				", p1=" + DatatypeConverter.printHexBinary(p1) +
+				", p2=" + DatatypeConverter.printHexBinary(p2) +
 				", data=" + DatatypeConverter.printHexBinary(data) +
 				'}';
 	}
