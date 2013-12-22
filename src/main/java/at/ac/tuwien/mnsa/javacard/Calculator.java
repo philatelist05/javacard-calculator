@@ -10,7 +10,7 @@ public class Calculator extends Applet {
 	private static final byte ADD = (byte) 0x01;
 	private static final byte SUB = (byte) 0x02;
 	private static final byte MUL = (byte) 0x03;
-//	private static final byte DIV = (byte) 0x04;
+	//	private static final byte DIV = (byte) 0x04;
 	private static final byte AND = (byte) 0x05;
 	private static final byte OR = (byte) 0x06;
 	private static final byte NOT = (byte) 0x07;
@@ -42,7 +42,7 @@ public class Calculator extends Applet {
 
 		switch (buffer[ISO7816.OFFSET_INS]) {
 			case ADD:
-				result = (short) (p1 + p1);
+				result = (short) (p1 + p2);
 				break;
 			case SUB:
 				result = (short) (p1 - p2);

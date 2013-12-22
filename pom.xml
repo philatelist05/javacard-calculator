@@ -54,12 +54,6 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>org.ow2.util.bundles</groupId>
-			<artifactId>bouncycastle-java5-136</artifactId>
-			<version>1.0.0</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-lang3</artifactId>
 			<version>3.1</version>

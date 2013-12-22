@@ -1,4 +1,6 @@
-package at.ac.tuwien.mnsa.xml;
+package at.ac.tuwien.mnsa.xml.tag;
+
+import at.ac.tuwien.mnsa.xml.TestTagAdapter;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -9,12 +11,20 @@ import java.util.List;
 
 @XmlRootElement(name = "Data")
 @XmlAccessorType(XmlAccessType.FIELD)
-public class RootNode {
+public class RootTag {
+
 	@XmlElement(name = "Test")
-	@XmlJavaTypeAdapter(TestNodeAdapter.class)
+	@XmlJavaTypeAdapter(TestTagAdapter.class)
 	private List<Object[]> objects;
 
 	public List<Object[]> getObjects() {
 		return objects;
+	}
+
+	@Override
+	public String toString() {
+		return "RootTag{" +
+				"objects=" + objects +
+				'}';
 	}
 }

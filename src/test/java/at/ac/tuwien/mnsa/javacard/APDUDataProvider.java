@@ -1,6 +1,6 @@
 package at.ac.tuwien.mnsa.javacard;
 
-import at.ac.tuwien.mnsa.xml.RootNode;
+import at.ac.tuwien.mnsa.xml.tag.RootTag;
 import org.testng.annotations.DataProvider;
 import org.xml.sax.SAXException;
 
@@ -18,11 +18,11 @@ public class APDUDataProvider {
 	@DataProvider(name = "APDUDataProvider")
 	public static Iterator<Object[]> createData()
 			throws JAXBException, SAXException {
-		JAXBContext context = JAXBContext.newInstance(RootNode.class);
+		JAXBContext context = JAXBContext.newInstance(RootTag.class);
 		Unmarshaller unmarshaller = context.createUnmarshaller();
 		Schema schema = createSchema();
 		unmarshaller.setSchema(schema);
-		RootNode node = (RootNode) unmarshaller.unmarshal(getResource
+		RootTag node = (RootTag) unmarshaller.unmarshal(getResource
 				("testdata.xml"));
 		return node.getObjects().iterator();
 	}

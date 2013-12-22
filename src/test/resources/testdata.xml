@@ -1,8 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <Data xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-           xsi:noNamespaceSchemaLocation="testdata.xsd">
+      xsi:noNamespaceSchemaLocation="testdata.xsd">
+
+	<!-- ADD TESTS -->
+	<!-- 4 + 6 = A -->
 	<Test>
-		<APDUCommand cla="00" ins="01" p1="09" p2="01" data="00"/>
-		<ExpectedResponse sw="9000" data="000a"/>
+		<Input cla="00" ins="01" p1="04" p2="06" data="00"/>
+		<Output sw1="90" sw2="00" data="0a00"/>
 	</Test>
+	<!-- 6 + 4 = A -->
+	<Test>
+		<Input cla="00" ins="01" p1="06" p2="04" data="00"/>
+		<Output sw1="90" sw2="00" data="0a00"/>
+	</Test>
+	<!-- 0 + 0 = 0 -->
+	<Test>
+		<Input cla="00" ins="01" p1="00" p2="00" data="00"/>
+		<Output sw1="90" sw2="00" data="0000"/>
+	</Test>
+
 </Data>

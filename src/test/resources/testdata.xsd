@@ -6,7 +6,7 @@
 				<xs:element name="Test" maxOccurs="unbounded">
 					<xs:complexType>
 						<xs:all>
-							<xs:element name="APDUCommand">
+							<xs:element name="Input">
 								<xs:complexType>
 									<xs:attribute name="cla" type="OneByteHex" use="required"/>
 									<xs:attribute name="ins" type="OneByteHex" use="required"/>
@@ -15,10 +15,11 @@
 									<xs:attribute name="data" type="xs:hexBinary"/>
 								</xs:complexType>
 							</xs:element>
-							<xs:element name="ExpectedResponse">
+							<xs:element name="Output">
 								<xs:complexType>
-									<xs:attribute name="sw" type="TwoByteHex" use="required"/>
-									<xs:attribute name="data" type="xs:hexBinary"/>
+									<xs:attribute name="sw1" type="OneByteHex" use="required"/>
+									<xs:attribute name="sw2" type="OneByteHex" use="required"/>
+									<xs:attribute name="data" type="TwoByteHex"/>
 								</xs:complexType>
 							</xs:element>
 						</xs:all>
