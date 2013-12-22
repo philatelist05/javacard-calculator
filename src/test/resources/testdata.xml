@@ -2,56 +2,131 @@
 <Data xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:noNamespaceSchemaLocation="testdata.xsd">
 
-	<!-- ADD -->
+	<!--
+	****************************
+	Range:
+	0x80      to 0x7f
+	1000 0000 to 0111 1111
+	-128      to 127
+	****************************
+
+	Positive Number:
+	1  X  X  X    X  X  X  X
+
+	Negative Number:
+	0  X  X  X    X  X  X  X
+	****************************
+	-->
+
+	<!--
+	############################
+	            ADD
+	############################
+	-->
 	<!-- 4 + 6 = A -->
 	<Test>
 		<Input cla="00" ins="01" p1="04" p2="06" data="00"/>
 		<Output sw1="90" sw2="00" data="0a00"/>
 	</Test>
+	
 	<!-- 6 + 4 = A -->
 	<Test>
 		<Input cla="00" ins="01" p1="06" p2="04" data="00"/>
 		<Output sw1="90" sw2="00" data="0a00"/>
 	</Test>
+	
 	<!-- 0 + 0 = 0 -->
 	<Test>
 		<Input cla="00" ins="01" p1="00" p2="00" data="00"/>
 		<Output sw1="90" sw2="00" data="0000"/>
 	</Test>
+	
 	<!-- 7f + 1 = 80 -->
 	<Test>
 		<Input cla="00" ins="01" p1="7f" p2="01" data="00"/>
 		<Output sw1="90" sw2="00" data="8000"/>
 	</Test>
+	
 	<!-- 7f + 2 = 81 -->
 	<Test>
 		<Input cla="00" ins="01" p1="7f" p2="02" data="00"/>
 		<Output sw1="90" sw2="00" data="8100"/>
-	</Test>
+	</Test> 
+	
 	<!-- 05 + -1 = 04 -->
 	<Test>
 		<Input cla="00" ins="01" p1="05" p2="ff" data="00"/>
 		<Output sw1="90" sw2="00" data="0400"/>
 	</Test>
+	
 	<!-- 7f + 7f = fe -->
 	<Test>
 		<Input cla="00" ins="01" p1="7f" p2="7f" data="00"/>
 		<Output sw1="90" sw2="00" data="fe00"/>
 	</Test>
+	
 	<!-- 7f + -10 = 6f -->
 	<Test>
 		<Input cla="00" ins="01" p1="7f" p2="f0" data="00"/>
 		<Output sw1="90" sw2="00" data="6f00"/>
 	</Test>
+	
 	<!-- 05 + -10 = -0b -->
 	<Test>
 		<Input cla="00" ins="01" p1="05" p2="f0" data="00"/>
 		<Output sw1="90" sw2="00" data="f5ff"/>
 	</Test>
+	
 	<!-- 05 + -5 = 0 -->
 	<Test>
 		<Input cla="00" ins="01" p1="05" p2="fb" data="00"/>
 		<Output sw1="90" sw2="00" data="0000"/>
 	</Test>
 
+	<!--
+	############################
+				SUB
+	############################
+	-->
+	<!-- b0 -  a1 =  0f -->
+	<Test>
+		<Input cla="00" ins="02" p1="b0" p2="a1" data="00"/>
+		<Output sw1="90" sw2="00" data="0f00"/>
+	</Test>
+
+	<!-- a3 -  a0 =  03 -->
+	<Test>
+		<Input cla="00" ins="02" p1="a3" p2="a0" data="00"/>
+		<Output sw1="90" sw2="00" data="0300"/>
+	</Test>
+
+	<!-- f5 -  f4 =  01 -->
+	<Test>
+		<Input cla="00" ins="02" p1="f5" p2="f4" data="00"/>
+		<Output sw1="90" sw2="00" data="0100"/>
+	</Test>
+
+	<!-- 04 -  06 = -02 -->
+	<Test>
+		<Input cla="00" ins="02" p1="04" p2="06" data="00"/>
+		<Output sw1="90" sw2="00" data="feff"/>
+	</Test>
+
+	<!-- b0 -  b1 = -01 -->
+	<Test>
+		<Input cla="00" ins="02" p1="b0" p2="b1" data="00"/>
+		<Output sw1="90" sw2="00" data="ffff"/>
+	</Test>
+
+	<!-- f5 -  f6 = -01 -->
+	<Test>
+		<Input cla="00" ins="02" p1="f5" p2="f6" data="00"/>
+		<Output sw1="90" sw2="00" data="ffff"/>
+	</Test>
+
+	<!-- 05 - -01 =  06 -->
+	<Test>
+		<Input cla="00" ins="02" p1="05" p2="ff" data="00"/>
+		<Output sw1="90" sw2="00" data="0600"/>
+	</Test>
 </Data>
