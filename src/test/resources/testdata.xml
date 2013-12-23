@@ -58,7 +58,8 @@
 		<Input cla="00" ins="01" p1="05" p2="ff" data="00"/>
 		<Output sw1="90" sw2="00" data="0400"/>
 	</Test>
-	
+
+	<!-- Overflow Test -->
 	<!-- 7f + 7f = fe -->
 	<Test>
 		<Input cla="00" ins="01" p1="7f" p2="7f" data="00"/>
@@ -129,4 +130,65 @@
 		<Input cla="00" ins="02" p1="05" p2="ff" data="00"/>
 		<Output sw1="90" sw2="00" data="0600"/>
 	</Test>
+
+	<!--
+	############################
+				MUL
+	############################
+	-->
+
+	<!-- 00 *  ff =    00 -->
+	<Test>
+		<Input cla="00" ins="03" p1="00" p2="ff" data="00"/>
+		<Output sw1="90" sw2="00" data="0000"/>
+	</Test>
+
+	<!-- 02 *  0a =    14 -->
+	<Test>
+		<Input cla="00" ins="03" p1="02" p2="0a" data="00"/>
+		<Output sw1="90" sw2="00" data="1400"/>
+	</Test>
+
+	<!-- 13 *  02 =    26 -->
+	<Test>
+		<Input cla="00" ins="03" p1="13" p2="02" data="00"/>
+		<Output sw1="90" sw2="00" data="2600"/>
+	</Test>
+
+	<!-- 70 *  03 =   150 -->
+	<Test>
+		<Input cla="00" ins="03" p1="70" p2="03" data="00"/>
+		<Output sw1="90" sw2="00" data="5001"/>
+	</Test>
+
+	<!-- 70 *  30 =  1500 -->
+	<Test>
+		<Input cla="00" ins="03" p1="70" p2="30" data="00"/>
+		<Output sw1="90" sw2="00" data="0015"/>
+	</Test>
+
+	<!-- 70 * -30 = -1500 (eb00) -->
+	<Test>
+		<Input cla="00" ins="03" p1="70" p2="d0" data="00"/>
+		<Output sw1="90" sw2="00" data="00eb"/>
+	</Test>
+
+	<!-- 7f *  7f =  3f01 -->
+	<Test>
+		<Input cla="00" ins="03" p1="7f" p2="7f" data="00"/>
+		<Output sw1="90" sw2="00" data="013f"/>
+	</Test>
+
+	<!-- 7f * -80 = -3f80 (c080) -->
+	<Test>
+		<Input cla="00" ins="03" p1="7f" p2="80" data="00"/>
+		<Output sw1="90" sw2="00" data="80c0"/>
+	</Test>
+
+	<!-- -80 * -80 =  4000 -->
+	<Test>
+		<Input cla="00" ins="03" p1="80" p2="80" data="00"/>
+		<Output sw1="90" sw2="00" data="0040"/>
+	</Test>
+
 </Data>
