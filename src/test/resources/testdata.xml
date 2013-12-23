@@ -215,4 +215,40 @@
 		<Output sw1="90" sw2="00" data="0300"/>
 	</Test>
 
+	<!--
+	############################
+				OR
+	############################
+	-->
+
+	<!-- 00 (00) | -01 (ff) = -01 (ffff) -->
+	<Test>
+		<Input cla="00" ins="06" p1="00" p2="ff" data="00"/>
+		<Output sw1="90" sw2="00" data="ffff"/>
+	</Test>
+
+	<!--  00 (00) |  7f (7f) =  7f (007f) -->
+	<Test>
+		<Input cla="00" ins="06" p1="00" p2="7f" data="00"/>
+		<Output sw1="90" sw2="00" data="7f00"/>
+	</Test>
+
+	<!-- -0f (f1) | -57 (a9) = -07 (fff9) -->
+	<Test>
+		<Input cla="00" ins="06" p1="f1" p2="a9" data="00"/>
+		<Output sw1="90" sw2="00" data="f9ff"/>
+	</Test>
+
+	<!-- -79 (87) |  53 (53) = -29 (ffd7) -->
+	<Test>
+		<Input cla="00" ins="06" p1="87" p2="53" data="00"/>
+		<Output sw1="90" sw2="00" data="d7ff"/>
+	</Test>
+
+	<!--  77 (77) |  53 (53) =  77 (0077) -->
+	<Test>
+		<Input cla="00" ins="06" p1="77" p2="53" data="00"/>
+		<Output sw1="90" sw2="00" data="7700"/>
+	</Test>
+
 </Data>
