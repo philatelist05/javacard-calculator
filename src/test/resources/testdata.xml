@@ -287,4 +287,93 @@
 		<Output sw1="90" sw2="00" data="fdff"/>
 	</Test>
 
+	<!--
+	############################
+			  INVALID
+	############################
+	-->
+	<!-- Unsupported Instruction: 09 -->
+	<Test>
+		<Input cla="00" ins="09" p1="00" p2="00" data="00"/>
+		<Output sw1="6d" sw2="00"/>
+	</Test>
+
+	<!-- Unsupported Instruction: A0 -->
+	<Test>
+		<Input cla="00" ins="a0" p1="00" p2="00" data="00"/>
+		<Output sw1="6d" sw2="00"/>
+	</Test>
+
+	<!-- Unsupported Instruction: B7 -->
+	<Test>
+		<Input cla="00" ins="b7" p1="00" p2="00" data="00"/>
+		<Output sw1="6d" sw2="00"/>
+	</Test>
+
+	<!-- Unsupported Instruction: C3 -->
+	<Test>
+		<Input cla="00" ins="c3" p1="00" p2="00" data="00"/>
+		<Output sw1="6d" sw2="00"/>
+	</Test>
+
+	<!-- Unsupported Instruction: D4 -->
+	<Test>
+		<Input cla="00" ins="d4" p1="00" p2="00" data="00"/>
+		<Output sw1="6d" sw2="00"/>
+	</Test>
+
+	<!-- Unsupported Instruction: E8 -->
+	<Test>
+		<Input cla="00" ins="e8" p1="00" p2="00" data="00"/>
+		<Output sw1="6d" sw2="00"/>
+	</Test>
+
+	<!-- Unsupported Instruction: F2 -->
+	<Test>
+		<Input cla="00" ins="f2" p1="00" p2="00" data="00"/>
+		<Output sw1="6d" sw2="00"/>
+	</Test>
+
+	<!-- Unsupported Instruction: CF -->
+	<Test>
+		<Input cla="00" ins="cf" p1="00" p2="00" data="00"/>
+		<Output sw1="6d" sw2="00"/>
+	</Test>
+
+	<!-- Unsupported Instruction: AA -->
+	<Test>
+		<Input cla="00" ins="aa" p1="00" p2="00" data="00"/>
+		<Output sw1="6d" sw2="00"/>
+	</Test>
+
+	<!-- Unsupported Instruction: 63 -->
+	<Test>
+		<Input cla="00" ins="63" p1="00" p2="00" data="00"/>
+		<Output sw1="6d" sw2="00"/>
+	</Test>
+
+	<!-- Invalid CLA byte, correct operation -->
+	<Test>
+		<Input cla="fd" ins="01" p1="00" p2="00" data="00"/>
+		<Output sw1="6e" sw2="00"/>
+	</Test>
+
+	<!-- Invalid CLA byte, wrong operation -->
+	<Test>
+		<Input cla="fd" ins="54" p1="00" p2="00" data="00"/>
+		<Output sw1="6e" sw2="00"/>
+	</Test>
+
+	<!-- wrong p2 (not 00) in case of Not operation -->
+	<Test>
+		<Input cla="00" ins="07" p1="00" p2="01" data="00"/>
+		<Output sw1="6a" sw2="86"/>
+	</Test>
+
+	<!-- wrong p2 (not 00) in case of Not operation -->
+	<Test>
+		<Input cla="00" ins="07" p1="00" p2="ff" data="00"/>
+		<Output sw1="6a" sw2="86"/>
+	</Test>
+
 </Data>

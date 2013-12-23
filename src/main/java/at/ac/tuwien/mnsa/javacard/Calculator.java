@@ -10,7 +10,7 @@ public class Calculator extends Applet {
 	private static final byte ADD = (byte) 0x01;
 	private static final byte SUB = (byte) 0x02;
 	private static final byte MUL = (byte) 0x03;
-	//	private static final byte DIV = (byte) 0x04;
+	private static final byte DIV = (byte) 0x04;
 	private static final byte AND = (byte) 0x05;
 	private static final byte OR = (byte) 0x06;
 	private static final byte NOT = (byte) 0x07;
@@ -31,9 +31,6 @@ public class Calculator extends Applet {
 		byte[] buffer = apdu.getBuffer();
 		if (buffer[ISO7816.OFFSET_CLA] != 0x00) {
 			ISOException.throwIt(ISO7816.SW_CLA_NOT_SUPPORTED);
-		}
-		if (buffer[ISO7816.OFFSET_LC] != 0x00) {
-			ISOException.throwIt(ISO7816.SW_WRONG_LENGTH);
 		}
 
 		byte p1 = buffer[ISO7816.OFFSET_P1];
