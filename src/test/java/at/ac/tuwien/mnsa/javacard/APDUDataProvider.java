@@ -1,38 +1,29 @@
 package at.ac.tuwien.mnsa.javacard;
 
-import at.ac.tuwien.mnsa.xml.tag.RootTag;
 import org.testng.annotations.DataProvider;
-import org.xml.sax.SAXException;
 
-import javax.xml.XMLConstants;
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Unmarshaller;
-import javax.xml.transform.stream.StreamSource;
-import javax.xml.validation.Schema;
-import javax.xml.validation.SchemaFactory;
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 public class APDUDataProvider {
 	@DataProvider(name = "APDUDataProvider")
-	public static Iterator<Object[]> createData()
-			throws JAXBException, SAXException {
-		JAXBContext context = JAXBContext.newInstance(RootTag.class);
-		Unmarshaller unmarshaller = context.createUnmarshaller();
-		Schema schema = createSchema();
-		unmarshaller.setSchema(schema);
-		RootTag node = (RootTag) unmarshaller.unmarshal(getResource
-				("testdata.xml"));
-		return node.getObjects().iterator();
-	}
+	public static Iterator<Object[]> createData() throws Exception {
+		InputStream resource = getResource("testdata.xml");
 
-	private static Schema createSchema() throws SAXException {
-		InputStream resourceStream = getResource("testdata.xsd");
-		StreamSource source = new StreamSource(resourceStream);
-		SchemaFactory factory =
-				SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
-		return factory.newSchema(source);
+		try {
+			SAXParserFactory factory = SAXParserFactory.newInstance();
+			factory.setValidating(true);
+			SAXParser saxParser = factory.newSAXParser();
+			List<Object[]> list = new ArrayList<Object[]>();
+			saxParser.parse(resource, new SAXContentHandler(list));
+			return list.iterator();
+		} finally {
+			resource.close();
+		}
 	}
 
 	private static InputStream getResource(String url) {
